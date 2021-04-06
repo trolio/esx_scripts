@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<style>
+			#voice {
+				position:absolute;
+				left: 6.4%;
+				top:96.1%;
+				margin: 1.12%;
+				margin-left: 2%;
+				width: 6.9%;
+				height: 0.9%;
+				padding:0px;
+				text-align: center;
+				border-style: solid;
+				border-width: 0.3%;
+				border-color: black;
+				float:left;
+				background-color:black;
+				opacity: 0.5;
+			}
+			#armor {
+				position:absolute;
+				left: -3.2%;
+				top:94.8%;
+				margin: 1.12%;
+				margin-left: 11.7%;
+				width: 6.9%;
+				height: 0.9%;
+				padding:0px;
+				text-align: center;
+				border-style: solid;
+				border-width: 0.3%;
+				border-color: black;
+				background-color:#0076ec;
+			}
+			#box, #boxArmor {
+				background:#f17cecc2;
+				width: 50%;
+				height: 100%;
+			}
+
+			#boxArmor {
+				background: #ee2ce4ad;
+			}
+			  body {
+         overflow:hidden;
+       }
+
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<script>	
+
+				$(function() {
+					var $debug = $("#debug");
+					var $heal = $("#voice");
+					var $box = $("#box");
+					var $boxArmor = $("#boxArmor");
+
+					window.addEventListener('message', function(event){
+					 	//$heal.text(event.data.heal-100);
+					 	//$debug.text(JSON.stringify(event.data)); 
+					 	//$debug.text("asdasd");
+					 	$box.css("width", event.data.heal + "%");
+					 	if (event.data.talking == true) 
+					 	{
+					 		$box.css("background", "#b913b0")
+					 	}
+					 	else if (event.data.talking == false)
+					 	{
+					 		$box.css("background", "#a8a8a8")
+					 	}
+					}); 
+				});
+
+		</script>
+		
+	</head>
+	<body>
+		
+			<div id="voice"><div id="box"></div></div>
+
+
+	</body>
+</html>
